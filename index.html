@@ -22,13 +22,12 @@
       align-items: center;
       justify-content: center;
       background:
-        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
+        linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)),
         url("ada.jpg") center/cover no-repeat fixed;
       color: #eaeaea;
       overflow: hidden;
     }
 
-    /* RUÍDO / ATMOSFERA */
     body::before {
       content: "";
       position: absolute;
@@ -49,9 +48,9 @@
       padding: 36px 26px;
       background: rgba(0,0,0,0.8);
       border-radius: 18px;
-      border: 1px solid #5a0000;
+      border: 1px solid rgba(255, 0, 0, 0.3);
       text-align: center;
-      box-shadow: 0 0 40px rgba(120,0,0,0.7);
+      box-shadow: 0 0 40px rgba(120, 0, 0, 0.7);
       z-index: 1;
     }
 
@@ -65,7 +64,6 @@
       box-shadow: 0 0 18px rgba(255,0,0,0.6);
     }
 
-    /* GLITCH NO NOME */
     .glitch {
       position: relative;
       display: inline-block;
@@ -102,7 +100,6 @@
       50% { clip-path: inset(35% 0 35% 0); transform: translate(1px, 1px); }
       100% { clip-path: inset(10% 0 60% 0); transform: translate(-1px, 1px); }
     }
-
     @keyframes glitch2 {
       0% { clip-path: inset(70% 0 0 0); transform: translate(1px, -1px); }
       50% { clip-path: inset(20% 0 40% 0); transform: translate(-1px, 1px); }
@@ -129,7 +126,6 @@
       overflow: hidden;
       transition: 0.3s;
     }
-
     .links a::after {
       content: "";
       position: absolute;
@@ -143,11 +139,9 @@
       transform: translateX(-100%);
       transition: 0.4s;
     }
-
     .links a:hover::after {
       transform: translateX(100%);
     }
-
     .links a:hover {
       transform: scale(1.05);
       box-shadow: 0 0 22px rgba(255,0,0,0.8);
@@ -159,7 +153,6 @@
       color: #777;
     }
 
-    /* BOTÃO SOM */
     .sound {
       position: absolute;
       top: 12px;
@@ -177,7 +170,6 @@
 
 <body>
 
-  <!-- SOM DE TERROR -->
   <audio id="ambience" loop>
     <source src="https://cdn.pixabay.com/download/audio/2021/09/15/audio_9c6c1f3f45.mp3" type="audio/mpeg">
   </audio>
@@ -192,7 +184,7 @@
 
     <div class="links">
       <a href="https://wa.me/55SEUNUMERO" target="_blank">💬 WhatsApp</a>
-      <a href="https://instagram.com/seuinstagram" target="_blank">📸 Instagram</a>
+      <a href="https://www.instagram.com/scarhb__" target="_blank">📸 Instagram</a>
       <a href="#">🩸 UNKNOWN SIGNAL</a>
     </div>
 
@@ -201,9 +193,8 @@
 
   <script>
     const audio = document.getElementById('ambience');
-    audio.volume = 0.25; // volume terror
+    audio.volume = 0.25;
     audio.play().catch(() => {});
-
     function toggleSound() {
       if (audio.paused) audio.play();
       else audio.pause();
