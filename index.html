@@ -2,11 +2,10 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>SCAR • Survival Horror</title>
+  <title>SCAR • Horror Profile</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Fonte gamer -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -22,36 +21,20 @@
       align-items: center;
       justify-content: center;
       background:
-        linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)),
+        linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.95)),
         url("ada.jpg") center/cover no-repeat fixed;
-      color: #eaeaea;
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: absolute;
-      inset: -50%;
-      background: url("https://i.imgur.com/8KQZ5ZQ.png");
-      opacity: 0.05;
-      animation: drift 90s linear infinite;
-    }
-
-    @keyframes drift {
-      to { transform: translate(-500px, -500px); }
+      color: #eee;
     }
 
     .card {
-      position: relative;
       width: 100%;
       max-width: 380px;
       padding: 36px 26px;
-      background: rgba(0,0,0,0.8);
-      border-radius: 18px;
-      border: 1px solid rgba(255, 0, 0, 0.3);
+      background: rgba(0,0,0,0.82);
+      border-radius: 20px;
       text-align: center;
-      box-shadow: 0 0 40px rgba(120, 0, 0, 0.7);
-      z-index: 1;
+      border: 1px solid rgba(255,0,0,0.35);
+      box-shadow: 0 0 40px rgba(120,0,0,0.7);
     }
 
     .avatar {
@@ -59,20 +42,20 @@
       height: 110px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 14px;
       border: 3px solid #5a0000;
-      box-shadow: 0 0 18px rgba(255,0,0,0.6);
+      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+      margin-bottom: 14px;
     }
 
     .glitch {
       position: relative;
       display: inline-block;
       font-size: 26px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: 3px;
       color: #ff4d4d;
-      text-shadow: 0 0 12px #7a0000;
       margin-bottom: 6px;
+      text-shadow: 0 0 12px #7a0000;
     }
 
     .glitch::before,
@@ -82,34 +65,34 @@
       top: 0;
       left: 0;
       width: 100%;
-      overflow: hidden;
     }
 
     .glitch::before {
       color: #00ffe1;
-      animation: glitch1 2.8s infinite linear alternate-reverse;
+      animation: glitch1 2.5s infinite linear alternate-reverse;
     }
 
     .glitch::after {
       color: #ff003c;
-      animation: glitch2 3.2s infinite linear alternate-reverse;
+      animation: glitch2 3s infinite linear alternate-reverse;
     }
 
     @keyframes glitch1 {
-      0% { clip-path: inset(0 0 80% 0); transform: translate(-1px, -1px); }
-      50% { clip-path: inset(35% 0 35% 0); transform: translate(1px, 1px); }
-      100% { clip-path: inset(10% 0 60% 0); transform: translate(-1px, 1px); }
-    }
-    @keyframes glitch2 {
-      0% { clip-path: inset(70% 0 0 0); transform: translate(1px, -1px); }
-      50% { clip-path: inset(20% 0 40% 0); transform: translate(-1px, 1px); }
-      100% { clip-path: inset(60% 0 10% 0); transform: translate(1px, 1px); }
+      0% { clip-path: inset(0 0 80% 0); transform: translate(-1px,-1px); }
+      50% { clip-path: inset(30% 0 40% 0); transform: translate(1px,1px); }
+      100% { clip-path: inset(10% 0 60% 0); transform: translate(-1px,1px); }
     }
 
-    .status {
+    @keyframes glitch2 {
+      0% { clip-path: inset(70% 0 0 0); transform: translate(1px,-1px); }
+      50% { clip-path: inset(20% 0 40% 0); transform: translate(-1px,1px); }
+      100% { clip-path: inset(60% 0 10% 0); transform: translate(1px,1px); }
+    }
+
+    .subtitle {
       font-size: 12px;
       letter-spacing: 2px;
-      color: #cfcfcf;
+      color: #bbb;
       margin-bottom: 22px;
     }
 
@@ -121,11 +104,12 @@
       color: #fff;
       border-radius: 12px;
       border: 1px solid #5a0000;
-      background: linear-gradient(135deg, #2b0000, #000);
+      background: linear-gradient(135deg, #250000, #000);
+      transition: 0.3s;
       position: relative;
       overflow: hidden;
-      transition: 0.3s;
     }
+
     .links a::after {
       content: "";
       position: absolute;
@@ -133,18 +117,20 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(255,0,0,0.3),
+        rgba(255,0,0,0.4),
         transparent
       );
       transform: translateX(-100%);
       transition: 0.4s;
     }
+
     .links a:hover::after {
       transform: translateX(100%);
     }
+
     .links a:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 22px rgba(255,0,0,0.8);
+      box-shadow: 0 0 25px rgba(255,0,0,0.8);
     }
 
     footer {
@@ -162,8 +148,8 @@
       border: 1px solid #5a0000;
       border-radius: 10px;
       padding: 6px 10px;
-      cursor: pointer;
       font-size: 11px;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -177,13 +163,12 @@
   <div class="card">
     <button class="sound" onclick="toggleSound()">SOM</button>
 
-    <img class="avatar" src="foto.jpg" alt="SCAR">
+    <img src="foto.jpg" class="avatar" alt="SCAR">
 
     <div class="glitch" data-text="SCAR">SCAR</div>
-    <div class="status">DO NOT TRUST ANYONE</div>
+    <div class="subtitle">SURVIVAL HORROR MODE</div>
 
     <div class="links">
-      <a href="https://wa.me/55SEUNUMERO" target="_blank">💬 WhatsApp</a>
       <a href="https://www.instagram.com/scarhb__" target="_blank">📸 Instagram</a>
       <a href="#">🩸 UNKNOWN SIGNAL</a>
     </div>
@@ -192,12 +177,11 @@
   </div>
 
   <script>
-    const audio = document.getElementById('ambience');
-    audio.volume = 0.25;
+    const audio = document.getElementById("ambience");
+    audio.volume = 0.3;
     audio.play().catch(() => {});
     function toggleSound() {
-      if (audio.paused) audio.play();
-      else audio.pause();
+      audio.paused ? audio.play() : audio.pause();
     }
   </script>
 
