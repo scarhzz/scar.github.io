@@ -9,54 +9,66 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family: Arial, Helvetica, sans-serif; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
     body {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: url('ada.jpg') center/cover no-repeat fixed;
+      background: radial-gradient(circle at center, #200000, #000);
       overflow: hidden;
       color: #fff;
-      cursor: pointer;
-      position: relative;
     }
 
-    /* Névoa vermelha */
+    /* névoa vermelha */
     body::before {
-      content:"";
-      position:absolute;
-      width:200%;
-      height:200%;
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
       background:
         radial-gradient(circle at 30% 40%, rgba(255,0,0,0.08), transparent 40%),
         radial-gradient(circle at 70% 60%, rgba(255,0,0,0.06), transparent 45%);
       animation: fog 25s linear infinite;
-      z-index:1;
     }
-    @keyframes fog { to { transform: translate(-200px,-200px); } }
 
-    /* Partículas / estrelas */
+    @keyframes fog {
+      from { transform: translate(0,0); }
+      to { transform: translate(-200px, -200px); }
+    }
+
+    /* estrelas / partículas */
     body::after {
-      content:"";
-      position:absolute;
-      width:200%;
-      height:200%;
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
       background-image:
         radial-gradient(1px 1px at 10% 20%, #fff, transparent),
-        radial-gradient(1px 1px at 40% 80%, #aaa, transparent),
-        radial-gradient(2px 2px at 70% 30%, #fff, transparent);
+        radial-gradient(1px 1px at 30% 80%, #aaa, transparent),
+        radial-gradient(2px 2px at 60% 40%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 70%, #888, transparent);
       animation: stars 50s linear infinite;
-      opacity:0.25;
-      z-index:2;
+      opacity: 0.25;
     }
-    @keyframes stars { to { transform: translateY(-600px); } }
 
-    /* Scanlines */
+    @keyframes stars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-600px); }
+    }
+
+    /* scanlines */
     .scanlines {
       position: fixed;
-      inset:0;
-      pointer-events:none;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
       background: repeating-linear-gradient(
         to bottom,
         rgba(255,255,255,0.02),
@@ -65,124 +77,107 @@
         transparent 3px
       );
       animation: flicker 3s infinite;
-      z-index:4;
+      z-index: 3;
     }
-    @keyframes flicker { 0%,100%{opacity:.15;} 50%{opacity:.05;} }
 
-    /* Alerta BIOHAZARD */
-    .alert {
-      position: absolute;
-      top:20px;
-      width:100%;
-      text-align:center;
-      font-size:20px;
-      color:#ff0000;
-      font-weight:bold;
-      text-shadow:0 0 10px red;
-      animation: blink 1s infinite;
-      z-index:5;
+    @keyframes flicker {
+      0%, 100% { opacity: 0.15; }
+      50% { opacity: 0.05; }
     }
-    @keyframes blink { 0%,50%,100%{opacity:1;} 25%,75%{opacity:0;} }
 
     .card {
       position: relative;
-      z-index:6;
-      background: rgba(0,0,0,0.85);
-      padding:35px 25px;
-      width:100%;
-      max-width:380px;
-      border-radius:18px;
-      text-align:center;
-      box-shadow:0 0 50px rgba(255,0,0,0.35);
+      z-index: 5;
+      background: rgba(0,0,0,0.8);
+      padding: 35px 25px;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 0 40px rgba(255,0,0,0.25);
       backdrop-filter: blur(6px);
     }
 
     .card img {
-      width:110px;
-      height:110px;
-      border-radius:50%;
-      object-fit:cover;
-      margin-bottom:15px;
-      border:2px solid #b00000;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 2px solid #b00000;
     }
 
-    /* GLITCH SCAR */
-    .glitch {
-      font-size:32px;
-      letter-spacing:6px;
-      color:#ff0033;
-      position:relative;
-      animation: glitch 2s infinite;
-      text-shadow:0 0 15px rgba(255,0,0,0.9);
+    h1 {
+      font-size: 30px;
+      letter-spacing: 5px;
+      color: #ff0033;
+      text-shadow: 0 0 12px rgba(255,0,0,0.8);
     }
-    .glitch::before, .glitch::after {
-      content:"SCAR";
-      position:absolute;
-      left:0; width:100%;
-      opacity:.8;
-    }
-    .glitch::before { color:red; animation: glitchTop 2s infinite; }
-    .glitch::after { color:#fff; animation: glitchBottom 1.5s infinite; }
-    @keyframes glitch { 0%,100%{transform:none;} 20%{transform:skew(-2deg);} 40%{transform:skew(2deg);} }
-    @keyframes glitchTop { 0%{transform:translate(0,0);} 50%{transform:translate(-2px,-2px);} }
-    @keyframes glitchBottom { 0%{transform:translate(0,0);} 50%{transform:translate(2px,2px);} }
 
-    .mode { font-size:13px; margin:10px 0 25px; color:#bbb; letter-spacing:2px; text-transform:uppercase; }
+    .mode {
+      font-size: 13px;
+      margin-top: 6px;
+      margin-bottom: 25px;
+      color: #bbb;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
     .links a {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      text-decoration:none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
       background: linear-gradient(135deg, #b00000, #400000);
-      color:#fff;
-      padding:14px;
-      margin:12px 0;
-      border-radius:12px;
-      font-weight:bold;
-      transition:.3s;
+      color: #fff;
+      padding: 14px;
+      margin: 12px 0;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.3s;
     }
-    .links a:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(255,0,0,1); }
 
-    footer { margin-top:18px; font-size:11px; color:#666; }
+    .links a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,0,0,0.9);
+    }
+
+    footer {
+      margin-top: 18px;
+      font-size: 11px;
+      color: #666;
+    }
   </style>
 </head>
 
-<body onclick="playAudio()">
+<body>
 
   <div class="scanlines"></div>
-  <div class="alert">BIOHAZARD</div>
-
-  <!-- SOM DE TERROR -->
-  <audio id="bgAudio" loop>
-    <source src="terror.mp3" type="audio/mpeg">
-  </audio>
 
   <div class="card">
+
+    <!-- SUA FOTO -->
     <img src="foto.jpg" alt="SCAR">
 
-    <div class="glitch">SCAR</div>
+    <h1>SCAR</h1>
     <div class="mode">Scar Game Mode</div>
 
     <div class="links">
       <a href="https://www.instagram.com/scarhb__?igsh=cTl6cmtmZmk5am82" target="_blank">
         <i class="fab fa-instagram"></i> Instagram
       </a>
-      <a href="#">🌐 Outro link</a>
+
+      <a href="#">
+        🌐 Outro link
+      </a>
     </div>
 
-    <footer>© 2025 • SCAR</footer>
-  </div>
+    <footer>
+      © 2025 • SCAR
+    </footer>
 
-  <script>
-    function playAudio(){
-      const audio = document.getElementById("bgAudio");
-      audio.volume = 0.2;
-      audio.play();
-      document.body.onclick = null;
-    }
-  </script>
+  </div>
 
 </body>
 </html>
